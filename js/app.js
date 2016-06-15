@@ -1,13 +1,19 @@
 $(document).ready(function() {
 	function userInput() {
-		var inputNumber = +parseInt(prompt("Enter an integer 1-100"));
-		if (inputNumber === 0) {
-			console.log('inputNumber')
+		var inputNumber = +prompt('Enter an integer 1-100');
+		var isDecimalOrNeg = inputNumber % 1 !== 0;
+
+		if (isDecimalOrNeg) {
+			alert('Decimals and negative not supported!')
+			userInput();
+		}
+		else if (inputNumber === 0) {
+			console.log('inputNumber');
 			return;
 		}
 		else if (isNaN(inputNumber)) {
 			alert ("Not a number!");
-			userInput;
+			userInput();
 		}
 		else {
 			results(inputNumber);
